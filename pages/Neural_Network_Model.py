@@ -28,7 +28,7 @@ def load_model():
     return model
 
 def train_model(epochs):
-    train_dir = 'D:/KMUTNB-CS/IS/dataset/training_set'
+    train_dir = 'D:/KMUTNB-CS/Inteligentproject/dataset/training_set'
     transform = transforms.Compose([
         transforms.Resize((150, 150)),
         transforms.ToTensor(),
@@ -73,8 +73,8 @@ def predict(model, uploaded_image):
     with torch.no_grad():
         output = model(img)
         prediction = torch.sigmoid(output).item()
-    label = "Cat" if prediction >= 0.5 else "Dog"
-    confidence = prediction if label == "Cat" else 1 - prediction
+    label = "Dog" if prediction >= 0.5 else "Cat"
+    confidence = prediction if label == "Dog" else 1 - prediction
     return f"{label} ({confidence:.2%} confidence)"
 
 st.title('Cat vs Dog Classifier')
