@@ -27,39 +27,39 @@ def load_model():
         st.success("Model loaded successfully!")
     return model
 
-# def train_model(epochs):
-#     train_dir = 'D:/KMUTNB-CS/IS/dataset/training_set'
-#     transform = transforms.Compose([
-#         transforms.Resize((150, 150)),
-#         transforms.ToTensor(),
-#         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-#     ])
-#     train_data = datasets.ImageFolder(train_dir, transform=transform)
-#     train_loader = DataLoader(train_data, batch_size=32, shuffle=True)
+def train_model(epochs):
+    train_dir = 'D:/KMUTNB-CS/IS/dataset/training_set'
+    transform = transforms.Compose([
+        transforms.Resize((150, 150)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ])
+    train_data = datasets.ImageFolder(train_dir, transform=transform)
+    train_loader = DataLoader(train_data, batch_size=32, shuffle=True)
 
-#     model = create_model()
-#     criterion = nn.BCEWithLogitsLoss()
-#     optimizer = optim.Adam(model.parameters(), lr=0.001)
+    model = create_model()
+    criterion = nn.BCEWithLogitsLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-#     progress_bar = st.progress(0)
+    progress_bar = st.progress(0)
 
-#     for epoch in range(epochs):
-#         model.train()
-#         running_loss = 0.0
-#         for i, (inputs, labels) in enumerate(train_loader):
-#             inputs, labels = inputs.to('cpu'), labels.to('cpu')
-#             optimizer.zero_grad()
-#             outputs = model(inputs)
-#             loss = criterion(outputs.squeeze(), labels.float())
-#             loss.backward()
-#             optimizer.step()
-#             running_loss += loss.item()
-#             progress = ((epoch * len(train_loader)) + (i + 1)) / (epochs * len(train_loader))
-#             progress_bar.progress(int(progress * 100))
-#         st.write(f"Epoch {epoch + 1}/{epochs} | Loss: {running_loss / len(train_loader):.4f}")
+    for epoch in range(epochs):
+        model.train()
+        running_loss = 0.0
+        for i, (inputs, labels) in enumerate(train_loader):
+            inputs, labels = inputs.to('cpu'), labels.to('cpu')
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            loss = criterion(outputs.squeeze(), labels.float())
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item()
+            progress = ((epoch * len(train_loader)) + (i + 1)) / (epochs * len(train_loader))
+            progress_bar.progress(int(progress * 100))
+        st.write(f"Epoch {epoch + 1}/{epochs} | Loss: {running_loss / len(train_loader):.4f}")
     
-#     save_model(model)
-#     return model
+    save_model(model)
+    return model
 
 def predict(model, uploaded_image):
     img = Image.open(uploaded_image).resize((150, 150))
@@ -81,12 +81,12 @@ st.title('Cat vs Dog Classifier')
 st.write('อัปโหลดรูปภาพของแมวหรือสุนัขเพื่อทำนายผล')
 
 uploaded_file = st.file_uploader("เลือกรูปภาพ...", type=["jpg", "png", "jpeg"])
-# epochs = st.slider("เลือกจำนวน Epochs", min_value=1, max_value=50, value=10, step=1)
+epochs = st.slider("เลือกจำนวน Epochs", min_value=1, max_value=50, value=10, step=1)
 
-# if st.button('เริ่มการฝึกโมเดล'):
-#     st.write(f"เริ่มการฝึกโมเดล {epochs} รอบ Epochs")
-#     train_model(epochs)
-#     st.success("Training completed!")
+if st.button('เริ่มการฝึกโมเดล'):
+    st.write(f"เริ่มการฝึกโมเดล {epochs} รอบ Epochs")
+    train_model(epochs)
+    st.success("Training completed!")
 
 model = load_model()
 
