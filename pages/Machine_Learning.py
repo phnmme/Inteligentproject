@@ -7,7 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 
 st.set_page_config(page_title="HDPredictor", page_icon="❤️", layout="centered")
 
-st.title(" HDPredictor - Heart Disease Prediction")
+st.title("HDPredictor - Heart Disease Prediction")
 st.markdown("**โปรแกรมนี้สามารถทำนายว่าคุณมีโอกาสเป็นโรคหัวใจหรือไม่ จากข้อมูลสุขภาพของคุณ**")
 
 st.subheader(" การเตรียม Dataset")

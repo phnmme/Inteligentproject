@@ -3,10 +3,9 @@ import streamlit as st
 st.set_page_config(page_title="The Intelligent Project", page_icon="🤖", layout="centered")
 
 st.title("The Intelligent Project")
-st.subheader("- Machine Learning")
-st.subheader("HDPredictor")
+st.subheader("HDPredictor - Heart Disease Prediction")
 
-st.image("https://hdmall.co.th/blog/wp-content/uploads/2024/09/cardiovascular-treatment-comparison-01-scaled.jpg.webp", width=650)
+st.image("https://hdmall.co.th/blog/wp-content/uploads/2024/09/cardiovascular-treatment-comparison-01-scaled.jpg.webp", width=700)
 
 st.markdown(
     """
@@ -19,7 +18,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.subheader("- Neural Network")
 st.subheader("Cat vs Dog Classification")
 
 st.image("https://i.ytimg.com/vi/PV63uCaW8dc/maxresdefault.jpg", width=700)
