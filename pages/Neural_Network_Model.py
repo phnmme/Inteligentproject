@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 from PIL import Image
 import os
 
-MODEL_PATH = "/dataset/cat_vs_dog.pth"
+MODEL_PATH = "dataset/cat_vs_dog.pth"
 
 def create_model():
     model = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)
@@ -17,7 +17,7 @@ def create_model():
 
 def save_model(model):
     torch.save(model.state_dict(), MODEL_PATH)
-    st.success("Model saved successfully!")
+    st.success("โหลด model สำเร็จ!")
 
 def load_model():
     model = create_model()
