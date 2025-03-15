@@ -17,14 +17,13 @@ def create_model():
 
 def save_model(model):
     torch.save(model.state_dict(), MODEL_PATH)
-    st.success("โหลด model สำเร็จ!")
+    st.success("Model saved successfully!")
 
 def load_model():
     model = create_model()
     if os.path.exists(MODEL_PATH):
         model.load_state_dict(torch.load(MODEL_PATH))
         model.eval()
-        st.success("Model loaded successfully!")
     return model
 
 # def train_model(epochs):
