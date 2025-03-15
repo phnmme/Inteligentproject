@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 from PIL import Image
 import os
 
-MODEL_PATH = "cat_vs_dog.pth"
+MODEL_PATH = "/dataset/cat_vs_dog.pth"
 
 def create_model():
     model = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)

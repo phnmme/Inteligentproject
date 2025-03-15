@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 
-DATA_PATH = "D:/KMUTNB-CS/Inteligentproject/dataset/heart.csv"
+DATA_PATH = "/dataset/heart.csv"
 
 df = pd.read_csv(DATA_PATH)
 
